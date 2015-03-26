@@ -1,0 +1,20 @@
+{
+  "name": "test-node-oracle",
+  "version": "0.0.1",
+  "description": "Experimenting with node and oracle"
+  "main": "testdao.js",
+  "dependencies": {
+    "generic-pool": "~2.0.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": " https://github.com/saule1508/docker-nodejs-oracle.git"
+  },
+  "keywords": [
+    "mad",
+    "oracle"
+  ],
+  "author": "p.timmermans@evs.com",
+  "license": "BSD"
+}
+
