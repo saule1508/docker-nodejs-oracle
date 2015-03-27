@@ -8,6 +8,6 @@ RUN rpm -i /opt/oracle-instantclient12.1-basic-12.1.0.2.0-1.x86_64.rpm && rm /op
 ADD oracle-instantclient12.1-devel-12.1.0.2.0-1.x86_64.rpm /opt/oracle-instantclient12.1-devel-12.1.0.2.0-1.x86_64.rpm
 RUN rpm -i /opt/oracle-instantclient12.1-devel-12.1.0.2.0-1.x86_64.rpm && rm /opt/oracle-instantclient12.1-devel-12.1.0.2.0-1.x86_64.rpm
 RUN cd /opt && git clone https://github.com/oracle/node-oracledb.git && cd node-oracledb && npm install -g
-ADD sample /opt/
-RUN cp /opt/sample ; npm install
+ADD sample /opt/sample
+RUN cd /opt/sample && npm install
 ENV NODE_PATH /usr/local/lib/node_modules

@@ -1,20 +1,22 @@
 {
-  "name": "test-node-oracle",
-  "version": "0.0.1",
-  "description": "Experimenting with node and oracle"
+  "name": "test-nodejs-oracledriver",
+  "version": "1.0.0",
+  "description": "experiment with oracledriver for nodejs and objects in js",
   "main": "testdao.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "dependencies": {
     "generic-pool": "~2.0.4"
   },
   "repository": {
     "type": "git",
-    "url": " https://github.com/saule1508/docker-nodejs-oracle.git"
+    "url": "https://github.com/saule1508/docker-nodejs-oracle.git"
   },
   "keywords": [
-    "mad",
+    "nodejs",
     "oracle"
   ],
-  "author": "p.timmermans@evs.com",
+  "author": "Pierre Timmermans",
   "license": "BSD"
 }
-

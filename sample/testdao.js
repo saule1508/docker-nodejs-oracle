@@ -1,12 +1,7 @@
 var oracledb = require('oracledb');
 var generic_pool=require('generic-pool'),
- myDAO=require('./dao/myDAO')
-
-var dbconfig = {
- 'username' : 'scott',
- 'password' : 'tiger',
- 'url' : 'dockerhost:1521/orcl'
-};
+ myDAO=require('./dao/myDAO'),
+ dbconfig=require('./config/dbconfig.js')
 
 var pool = generic_pool.Pool({
  name: 'oracledb',

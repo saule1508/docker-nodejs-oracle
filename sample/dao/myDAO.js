@@ -11,7 +11,7 @@ MyDAO = (function (){
 
   var SQL_JOBS="select owner,job_name,state from dba_scheduler_jobs where owner=:owner";
   var pool ;
-  var doSQL = function(SQL,callback){
+  var doSQL = function(SQL,params,callback){
     pool.acquire(function(err,db){
       if (err){
         return callback(err,null);
@@ -40,5 +40,4 @@ MyDAO = (function (){
     getJobs : getJobs
   }
 }());
-//console.log(MyDAO);
 module.exports.MyDAO = MyDAO;
