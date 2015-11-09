@@ -2,7 +2,6 @@ var oracledb = require('oracledb');
 
 /*
 * using the module revelation pattern
-* as described in the very good book 
 * ...
 */
 
@@ -12,12 +11,17 @@ MyDAO = (function (){
   var SQL_JOBS="select owner,job_name,state from dba_scheduler_jobs where owner=:owner";
   var pool ;
   var doSQL = function(SQL,params,callback){
-    pool.acquire(function(err,db){
+    pool.getConnection(function(err,db){
       if (err){
         return callback(err,null);
       }
       db.execute(SQL,params,{outFormat:oracledb.OBJECT},function(err,results){
-        pool.release(db);
+        db.release(function(err){
+	  if (err){
+	   console.log(err);
+	   throw err;
+	  }
+	});
         if (err) throw err;
         callback(err,results);
       });
@@ -40,4 +44,4 @@ MyDAO = (function (){
     getJobs : getJobs
   }
 }());
-module.exports.MyDAO = MyDAO;
+module.exports = MyDAO;

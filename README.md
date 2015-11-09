@@ -8,11 +8,11 @@ You must manually download the following rpm from oracle technet
 
 build the image:
 * clone the repository
-* put the two rpm in the directory
+* put the two rpm's mentionned above in the current directory
 * run
  docker build -t testoraclenode .
 
- run the image
+run the image:
 docker run -ti testoraclenode /bin/bash
 
 once in the container, go to /opt/sample, edit the db configuration file config/dbconfig.js and type
