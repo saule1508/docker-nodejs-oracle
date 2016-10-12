@@ -1,47 +1,21 @@
-var oracledb = require('oracledb');
+let baseDAO = require('./baseDAO.js')
 
-/*
-* using the module revelation pattern
-* ...
-*/
+let SQL_SELECTFROMDUAL = `select to_char(sysdate,'YYYY-MM-DD: hh24:mi:ss') as thedate from dual`;
 
-MyDAO = (function (){
-  "use strict";
+class myDAO extends baseDAO{
 
-  var SQL_JOBS="select owner,job_name,state from dba_scheduler_jobs where owner=:owner";
-  var pool ;
-  var doSQL = function(SQL,params,callback){
-    pool.getConnection(function(err,db){
-      if (err){
-        return callback(err,null);
-      }
-      db.execute(SQL,params,{outFormat:oracledb.OBJECT},function(err,results){
-        db.release(function(err){
-	  if (err){
-	   console.log(err);
-	   throw err;
-	  }
-	});
-        if (err) throw err;
-        callback(err,results);
-      });
-    });
-  }
+    getFromDual(){
+        this.doSQL(SQL_SELECTFROMDUAL,{}, (err,results)=>{
+            if (err){
+                console.log('there was an error');
+                console.log(err);
+                return;
+            }
+            console.log('success');
+            console.log(results);
+            return;
+        });
+    }
+}
 
-  var setPool = function (p){
-   pool = p;
-  }
-
-  /*
-  * params : {'owner' :'...'}
-  */
-  var getJobs = function(params,callback){
-   doSQL(SQL_JOBS,params,callback);
-  }
-
-  return {
-    setPool : setPool,
-    getJobs : getJobs
-  }
-}());
-module.exports = MyDAO;
+module.exports = myDAO;
